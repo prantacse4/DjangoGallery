@@ -8,13 +8,13 @@
 <meta name="Description" content="Enter your description here"/>
 <link rel="stylesheet" href="{% static 'css/bootstrap4.5.css' %}">
 <link rel="stylesheet" href="{% static 'css/fontawesome5.15.css' %}">
-
+<link rel="stylesheet" href="{% static 'css/gallery.css' %}">
 {% block extracsscdn %}
     
 {% endblock extracsscdn %}
     
 
-<link rel="icon" href="#" type="image/png" >
+<link rel="icon" href="{% static 'image/dnd.png' %}" type="image/png" >
 <title>
 {% block title %}
     
@@ -23,72 +23,6 @@
 </head>
 <body>
     
-
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <a class="navbar-brand mybrand" href="#">DJBangla</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-              <a class="nav-link 
-              
-              {% block homeactive %}
-                
-              {% endblock homeactive %} 
-                
-              " href="#">Home </a>
-            </li>
-            <li class="nav-item">
-              
-              <a class="nav-link 
-                {% block studentactive %}
-                    
-                {% endblock studentactive %}
-                    " 
-                    href="# ">Student</a>
-                
-
-            </li>
-            <li class="nav-item">
-                <a class="nav-link 
-                {% block teacheractive %}
-                    
-                {% endblock teacheractive %}
-                    " href="#">Teacher</a>
-              </li>
-
-              
-              
-                
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                GoTo
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Crud</a>
-                <a class="dropdown-item" href="#">Live Crud</a>
-                <a class="dropdown-item" href="#">Image Crud</a>
-                <a class="dropdown-item" href="#">Authentication</a>
-                <a class="dropdown-item" href="#">Authentication(Profile)</a>
-                <a class="dropdown-item" href="#">Authentication(Role)</a>
-                <a class="dropdown-item" href="#">Authentication(Multiple)</a>
-                <a class="dropdown-item" href="#">Authentication(Multiple)</a>
-                <a class="dropdown-item" href="#">Add To Cart</a>
-              </div>
-            </li>
-
-            
-          </ul>
-
-   
-
-        </div>
-      </nav>
-
     {% block body %}
         
     {% endblock body %}

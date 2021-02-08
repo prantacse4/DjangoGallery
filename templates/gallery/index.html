@@ -2,18 +2,156 @@
 
 {% load static %}
 {% block title %}
-    PROJECTS | MULTIAUTH
+    PROJECTS | GALLEY
 {% endblock title %}
 
-{% block teacheractive %}
-    active
-{% endblock teacheractive %}
-    
 
 {% block body %}
-ff
 
-<!-- <input type='file' name="image" class="form-control-file" onchange="readURL(this);" />  -->
+<div class="gallery">
+    <div class="leftsection">
+        <div class="album">
+
+           <a href="#">
+            <div class="gallery_items">
+                <div class="overlay">
+                    <div class="text">Album Description</div>
+                  </div>
+                  <div class="img-gradient">
+                <img src="{% static 'image/1.jpg' %}" alt="">
+                  </div>
+            </div>
+           </a>
+
+
+           <a href="#">
+            <div class="gallery_items">
+                <div class="overlay">
+                    <div class="text">Album Description</div>
+                  </div>
+                  <div class="img-gradient">
+                <img src="{% static 'image/1.jpg' %}" alt="">
+                  </div>
+            </div>
+           </a>
+
+           <a href="#">
+            <div class="gallery_items">
+                <div class="overlay">
+                    <div class="text">Album Description</div>
+                  </div>
+                  <div class="img-gradient">
+                <img src="{% static 'image/1.jpg' %}" alt="">
+                  </div>
+            </div>
+           </a>
+
+        </div>
+
+    </div>
+    
+    <div class="rightsection">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="text-center">Add Some Photos to this Album <span class="spnaplus" id="reset"  data-toggle="modal" data-target="#exampleModal">+</span></h5>
+            </div>
+        </div>
+
+
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add Photos</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="reset">
+                    <span aria-hidden="true" id="reset">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="uploader">
+                        <div class="draganddrop">
+                            <div class="insidedndd">
+                                <img src="{% static 'image/dnd.png' %}" />
+                                <p>Select or Drag and Drop Photos</p>
+                            </div>
+                        </div>
+                        <img id="uploaderimage" src=""/>
+                        <input type="file" name="userprofile_picture"  id="filePhoto" onchange="readURL(this);" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" id="reset">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="insidephotos">
+            <div class="row">
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/1.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/2.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/1.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/2.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/1.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/2.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/1.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/2.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/1.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/2.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/1.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="image_size col-md-3">
+                    <img src="{% static 'image/2.jpg' %}" alt="" width="100%">
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+
 
 
 {% endblock body %}
@@ -28,21 +166,31 @@ ff
         $(document).ready(function(){
         window.history.replaceState('','',window.location.href)
         });
- </script>
- <!-- <script>
+    
+    $('#uploaderimage').ready(function(){
+        $('#uploaderimage').hide();
+    });
+
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
-                $('#blah')
-                    .attr('src', e.target.result);
-                    
+                $('#uploaderimage').show();
+                $('#uploaderimage').attr('src', e.target.result);
             };
-
             reader.readAsDataURL(input.files[0]);
         }
     }
- </script> -->
+
+
+    $('#reset').on('click',function(){
+        $('#filePhoto').val(null);
+        $('#uploaderimage').attr('src', null);
+        $('#uploaderimage').hide();
+      });
+ </script>
+
+
+
 {% endblock scripts %}
     
