@@ -6,7 +6,7 @@
 /* BanglaFont */
 
 @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap");
 :root {
   --roboto: "Roboto", sans-serif;
   --engfont: "Barlow", sans-serif;
@@ -94,7 +94,6 @@ body {
 .insidephotos {
   margin: 0.3rem;
   border-left: 0.4rem solid #ffce81;
-  border-top: 0.4rem solid #ffce81;
   border-radius: 0.2rem;
   padding: 0rem 1rem;
 }
@@ -108,11 +107,8 @@ body {
 }
 .image_size img:hover {
   box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.24);
-  border: 0.2rem solid transparent;
-  position: absolute;
-  height: 100%;
+
   cursor: pointer;
-  z-index: 111;
 }
 .spnaplus {
   font-size: 1.2rem;
@@ -120,8 +116,6 @@ body {
   color: var(--bg);
   cursor: pointer;
 }
-
-
 
 .uploader {
   position: relative;
@@ -152,7 +146,7 @@ body {
   z-index: 1;
   object-fit: cover;
   border: 1px solid transparent;
-  border-radius: .4rem;
+  border-radius: 0.4rem;
 }
 .draganddrop {
   height: 100%;
@@ -161,17 +155,31 @@ body {
   justify-content: center;
   align-items: center;
 }
-.insidedndd{
+.insidedndd {
   text-align: center;
 }
-.insidedndd p{
+.insidedndd p {
   color: var(--bg);
-font-family: var(--engfont);
-font-weight: 500;
-font-size: 1.3rem;
+  font-family: var(--engfont);
+  font-weight: 500;
+  font-size: 1.3rem;
 }
-.insidedndd img{
+.insidedndd img {
   height: 8rem;
-width: auto;
-text-align: center;
+  width: auto;
+  text-align: center;
+}
+
+.imgalbum {
+  max-height: 10rem;
+}
+.imgalbum img {
+  display: none;
+}
+.imgalbum img:nth-child(1) {
+  display: block;
+}
+
+.aactive {
+  border: 0.4rem solid #ffce81 !important;
 }

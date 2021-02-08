@@ -7,21 +7,21 @@
 
 
 {% block body %}
+
 <!-- ERRORS AND SUCCESS MESSAGES -->
 
-
 <!-- <div class="container">
-        {% for message in messages %}
-        <div class="alert alert-success">
-            <h5 class="text-center">{{message}}</h5>
-        </div>
-        {% endfor %}
+    {% for message in messages %}
+    <div class="alert alert-success">
+        <h5 class="text-center">{{message}}</h5>
+    </div>
+    {% endfor %}
 
-        {% if myform.errors.album %}
-        <div class="alert alert-danger">
-            <h5 class="text-center">{{myform.errors.album}}</h5>
-        </div>
-        {% endif %}
+    {% if myform.errors.album %}
+    <div class="alert alert-danger">
+        <h5 class="text-center">{{myform.errors.album}}</h5>
+    </div>
+    {% endif %}
 
 </div> -->
 
@@ -32,26 +32,31 @@
 <div class="gallery">
     <div class="leftsection">
         <div class="album">
+            <a href="{% url 'gallery' %}" class="btn btn-info">Home</a>
             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#createAlbumModal" id="resetalbum">Create Album</a>
 
            
            {% for album in album %}
             <a href="{% url 'albums' album.id %}">
-                <div class="gallery_items">
+                <div class="gallery_items 
+                
+                {% if this_album.id == album.id %}
+                    aactive
+                {% endif %}
+                    
+                ">
                     <div class="overlay">
                         <div class="text">{{album.album}}</div>
                     </div>
-                    <div class="img-gradient">
+                    <div class="img-gradient ">
                         <div class="imgalbum">
                             {% for photos in photos %}
                         {% if photos.album == album  %}
                                 <img src="{{ photos.image.url }}" alt="">
-                    
-                            
                         {% endif %}
                         
                     {% endfor %}
-                            <img src="{% static 'image/1.jpg' %}" alt="">
+                    <img src="{% static 'image/1.jpg' %}" alt="">
                         </div>            
                     </div>
                 </div>
@@ -87,7 +92,7 @@
               </button>
             </div>
             <div class="modal-body">
-            <form action="" method="POST" id="albumform">
+            <form  method="POST" id="albumform">
                 {% csrf_token %}
                 <input type="text" class="form-control" name="album" placeholder="Album name" id="albuminput" required>
             </form>
@@ -143,25 +148,15 @@
                     <span aria-hidden="true" id="reset">&times;</span>
                   </button>
                 </div>
-
-
-                <div class="form-group">
-
-                
-
                 <div class="modal-body">
 
-                    <form action="{% url 'add_photo' %}" method="POST" id="photoform" enctype="multipart/form-data">
+
+                    <form action="{% url 'add_photo_from_album'  this_album.id%}" method="POST" id="photoform" enctype="multipart/form-data">
                         {% csrf_token %}
-                    <div class="form-group">
+                        <div class="form-group">
                     <div class="albumdetails">
-                        <select class="form-control" name="album" required>
-                            <option >Select Album</option>
-                            
-                            {% for album in album %}
-                                <option value="{{ album.id }}">{{ album.album }}</option>
-                            {% endfor %}
-                                
+                        <select class="form-control" name="album" >
+                            <option selected value="{{ this_album.id }}">{{this_album.album}}</option>
                         </select>
                     </div>
 
@@ -173,23 +168,20 @@
                             </div>
                         </div>
                         <img id="uploaderimage" src=""/>
-                        <input type="file" name="image"  id="filePhoto" onchange="readURL(this);"  required />
+                        <input type="file" name="image"  id="filePhoto" onchange="readURL(this);" />
                     </div>
-                    </div>
+                </div>
                 </form>
+
+
 
 
 
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal" id="reset">Close</button>
-                  <button type="button" class="btn btn-primary" id="photouploadbtn">Save</button>
+                  <button type="button" class="btn btn-primary"  id="photouploadbtn">Save</button>
                 </div>
-
-            </div>
-
-
-
               </div>
             </div>
           </div>
@@ -215,19 +207,18 @@
 
                 
                 
-                {% for photos in photos %}
+                {% for photos in photosal %}
             
                     <div class="image_size col-md-3">
                         <img src="{{ photos.image.url }}" alt="" width="100%">
-                    
 
-                    <form action="{% url 'delete_photos' photos.id %}" method="POST" class="d-inline">
-                        {% csrf_token %}
-                        <div class="mybutton text-center w-100">
-                            <button class="btn btn-danger w-100">Delete Photo</button>
-                        </div>
-                    </form>
-                </div>
+                        <form action="{% url 'delete_photos_from_album' photos.id %}" method="POST" class="d-inline">
+                            {% csrf_token %}
+                            <div class="mybutton text-center w-100">
+                                <button class="btn btn-danger w-100">Delete Photo</button>
+                            </div>
+                        </form>
+                    </div>
                     
                 {% endfor %}
                      
